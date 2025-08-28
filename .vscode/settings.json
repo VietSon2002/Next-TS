@@ -19,5 +19,11 @@
     "editor.formatOnSave": false
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "tailwindCSS.experimental.configFile": "src/tailwind.css"
+  "tailwindCSS.experimental.configFile": "src/tailwind.css",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  }
 }

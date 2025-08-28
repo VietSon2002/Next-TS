@@ -1,4 +1,4 @@
-import Button from './button';
+import Button from './Button';
 import Image from './image';
 import Menu from './menu';
 import Modal from './modal';

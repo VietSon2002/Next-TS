@@ -2,6 +2,23 @@ import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import Script from 'next/script';
 
+import {
+  AboutStart,
+  ArqueeStart,
+  BlogStart,
+  BrandLogoStart,
+  DiscoverStart,
+  FeatureStart,
+  Footer,
+  FormStart,
+  HeroSectionStart,
+  MarqueeStart,
+  NavBar,
+  PortfolioStart,
+  ServiceStart,
+  TeamStart,
+  TestimonialStart,
+} from '@/shared/components/organisms';
 import '../shared/components/organisms/form/style.scss';
 import '../style.scss';
 import '../tailwind.css';
@@ -42,8 +59,26 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body>
         <NextIntlClientProvider>
-          <ProviderRoot>{children}</ProviderRoot>
+          <ProviderRoot>
+            {children}
+            <NavBar />
+            <HeroSectionStart />
+            <FeatureStart />
+            <ArqueeStart />
+            <AboutStart />
+            <ServiceStart />
+            <DiscoverStart />
+            <MarqueeStart />
+            <TeamStart />
+            <FormStart />
+            <PortfolioStart />
+            <TestimonialStart />
+            <BrandLogoStart />
+            <BlogStart />
+            <Footer />
+          </ProviderRoot>
         </NextIntlClientProvider>
+
         {/* Load scripts client-side using Next.js Script component */}
         <Script src="/assets/library/imask/imask.min.js" strategy="afterInteractive" />
         <Script src="/assets/library/glightbox/glightbox.min.js" strategy="afterInteractive" />

@@ -1,37 +1,29 @@
-import classNames from 'classnames';
+import React from 'react';
 
-import { SvgIcon } from '@/shared/components/atoms';
-import './style.scss';
-import type Props from './type';
-
-const Component = ({
-  text = '',
-  size,
-  icon,
-  title,
-  className,
-  disabled,
-  isOutline,
-  type = 'button',
-  handleClick,
-}: Props) => {
-  const classButton = classNames('btn', size, className, { 'out-line': isOutline });
-  const render = () => (
-    <>
-      {!!icon && <SvgIcon name={icon} className={!size ? 'size-5' : 'size-3'} />}
-      {text}
-    </>
-  );
-  return (
-    <button
-      type={type}
-      disabled={disabled}
-      title={title ?? text}
-      className={classButton}
-      onClick={handleClick}>
-      {render()}
-    </button>
-  );
+type ButtonAsButton = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  as?: 'button';
 };
 
-export default Component;
+type ButtonAsAnchor = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+  as: 'a';
+  href: string;
+};
+
+type ButtonProps = ButtonAsButton | ButtonAsAnchor;
+
+export default function Button({ as = 'button', children, ...props }: ButtonProps) {
+  if (as === 'a') {
+    const { href, ...rest } = props as ButtonAsAnchor;
+    return (
+      <a href={href} className="appointment-btn" {...rest}>
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <button className="appointment-btn" {...(props as ButtonAsButton)}>
+      {children}
+    </button>
+  );
+}

@@ -1,0 +1,59 @@
+@reference "../../../../tailwind.css";
+
+.team-start {
+  @apply px-3 pb-16;
+
+  .container {
+    @apply flex items-center justify-between w-full mx-auto px-4;
+
+    .swiper-slide {
+      .profile-card {
+        @apply relative flex flex-col items-center justify-center bg-base-0 rounded-xl overflow-hidden cursor-pointer;
+      }
+
+      .social {
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%) translateY(16px);
+        display: inline-flex;
+        gap: 1rem;
+        justify-content: center;
+        background: white;
+        padding: 0.5rem;
+        border-radius: 9999px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+      }
+
+      .profile-card:hover .social {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, -50%) translateY(0);
+      }
+
+      .social-btn {
+        @apply bg-base-100 rounded-full p-1 flex items-center justify-center;
+        transition: background-color 0.3s;
+      }
+
+      .social-btn:hover {
+        @apply bg-primary-500;
+      }
+
+
+      img {
+        @apply rounded-xl h-72 object-cover;
+      }
+
+      h6 {
+        @apply font-bold mt-8;
+      }
+
+      p {
+        @apply text-gray-500 mt-1;
+      }
+    }
+  }
+}

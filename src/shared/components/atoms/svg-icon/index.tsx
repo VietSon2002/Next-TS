@@ -1,15 +1,15 @@
+// src/components/atoms/svg-icon/index.tsx
 import './style.scss';
-import type Props from './type';
+import type { SvgIconProps } from './type';
 
 /**
- * Renders an SVG icon.
+ * SVG Icon Atom
+ * @description Hiển thị icon từ sprite.svg
  */
-const Component = ({ name, className }: Props) => {
-  return (
-    <svg className={className}>
-      <use href={'/assets/images/sprite.svg#icon_' + name} />
-    </svg>
-  );
-};
+const SvgIcon = ({ name, className = '' }: SvgIconProps) => (
+  <svg className={`svg-icon ${className}`}>
+    <use href={`/assets/images/sprite.svg#icon-${name}`} />
+  </svg>
+);
 
-export default Component;
+export default SvgIcon;

@@ -1,7 +1,6 @@
 import type { EIcon } from '@/shared/enums';
 
-type Props = {
-  readonly name: EIcon; // Name of the icon ==> Required
+export type SvgIconProps = {
+  readonly name: EIcon;
   readonly className?: string;
 };
-export default Props;

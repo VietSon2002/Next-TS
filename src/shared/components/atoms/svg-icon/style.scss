@@ -1,5 +1,17 @@
+/* src/components/atoms/svg-icon/style.scss */
 @reference "../../../../tailwind.css";
 
-svg {
-  fill: currentColor;
+.svg-icon {
+  @apply w-8 h-8 flex items-center justify-center rounded-full bg-base-200 border border-transparent transition-all duration-300 ease-in-out;
+
+  &:hover {
+    @apply bg-primary-500 border-base-0;
+    use {
+      @apply fill-base-0;
+    }
+  }
+
+  use {
+    @apply w-4 h-4 fill-base-900 transition-all duration-300 ease-in-out;
+  }
 }

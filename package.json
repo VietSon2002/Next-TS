@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint --dir src/app --dir src/shared",
     "format": "prettier --write src/**/*.{tsx,jsx,ts,js,less,json}",
     "lint-staged": "lint-staged",
     "prepare": "husky",
@@ -26,6 +26,8 @@
     "@tanstack/react-form": "^1.14.1",
     "bcrypt": "^6.0.0",
     "classnames": "^2.5.1",
+    "gasp": "^0.0.2",
+    "gsap": "^3.13.0",
     "next": "15.4.1",
     "next-auth": "^4.24.11",
     "next-intl": "^4.3.4",
@@ -34,6 +36,7 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-redux": "^9.2.0",
+    "swiper": "^11.2.10",
     "zod": "^4.0.5"
   },
   "devDependencies": {
@@ -51,6 +54,7 @@
     "eslint-plugin-sonarjs": "^3.0.4",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
+    "postcss-nested": "^7.0.2",
     "prettier": "^3.6.2",
     "prettier-plugin-organize-attributes": "^1.0.0",
     "prettier-plugin-organize-imports": "^4.1.0",

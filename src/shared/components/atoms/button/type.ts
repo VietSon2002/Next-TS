@@ -17,3 +17,8 @@ type Props = {
   readonly handleClick?: MouseEventHandler<HTMLButtonElement>;
 };
 export default Props;
+// export interface ButtonProps {
+//   label: string;
+//   onClick?: () => void;
+//   variant?: 'primary' | 'secondary';
+// }

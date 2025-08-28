@@ -1,0 +1,14 @@
+@reference "../../../../../tailwind.css";
+
+
+.icon-with-label {
+  @apply flex items-center gap-1;
+
+  .icon {
+    @apply w-6 h-6 fill-base-0;
+  }
+
+  .label {
+    @apply text-white;
+  }
+}

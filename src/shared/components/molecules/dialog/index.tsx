@@ -1,8 +1,9 @@
+'use client';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 
 import { EDialog, EIcon } from '@/shared/enums';
-import Button from '../../atoms/button';
+import Button from '../../atoms/Button';
 import Modal from '../../atoms/modal';
 import SvgIcon from '../../atoms/svg-icon';
 import type Props from './type';

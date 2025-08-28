@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 import { EIcon } from '@/shared/enums';
-import Button from '../../atoms/button';
+import Button from '../../atoms/Button';
 import SvgIcon from '../../atoms/svg-icon';
 import './style.scss';
 
@@ -48,9 +48,15 @@ const Component = ({ error, reset, statusCode }: ErrorPageProps) => {
         </div>
         <div className="flex gap-3">
           <Link href={`/`}>
-            <Button text={t('BackToHome')} icon={EIcon.Warning} />
+            <Button>
+              <SvgIcon name={EIcon.Warning} className="mr-2" />
+              {t('BackToHome')}
+            </Button>
           </Link>
-          <Button text={t('ReloadPage')} icon={EIcon.Warning} handleClick={fnTryAgain} />
+          <Button onClick={fnTryAgain}>
+            <SvgIcon name={EIcon.Warning} className="mr-2" />
+            {t('ReloadPage')}
+          </Button>
         </div>
       </div>
     </section>
