@@ -1,0 +1,269 @@
+@reference "../../../../tailwind.css";
+
+header {
+  @apply bg-base-200;
+  @apply sticky z-10;
+  @apply shadow-lg;
+  @apply backdrop-blur-sm;
+
+
+  .header-top {
+    @apply bg-black text-base-100 text-sm py-2 px-4 hidden md:flex justify-between items-center;
+    @media (min-width: 768px) {
+      @apply px-6;
+    }
+
+    @media (min-width: 1200px) {
+      @apply px-30;
+    }
+
+    div {
+      @apply flex items-center gap-4;
+
+      div {
+        @apply flex items-center gap-2;
+
+        span {
+          @apply text-base-100;
+        }
+
+        svg {
+          @apply w-5 h-5 fill-base-100;
+        }
+      }
+    }
+  }
+
+  .header-wrap {
+    @apply bg-base-0 shadow-sm px-4 py-3 flex justify-between items-center;
+
+    @media (min-width: 768px) {
+      @apply px-6;
+    }
+
+    @media (min-width: 1200px) {
+      @apply px-30;
+    }
+
+    div:first-child {
+      @apply flex items-center gap-4;
+
+      @media (min-width: 768px) {
+        @apply gap-7;
+      }
+
+      .nav-links {
+        @apply hidden xl:flex flex-col xl:flex-row absolute xl:static top-full left-0 w-full xl:w-auto bg-base-0 xl:bg-transparent shadow-md xl:shadow-none z-50 p-4 xl:p-0 transition-all duration-300 ease-in-out;
+
+        @media (min-width: 768px) {
+          @apply gap-3;
+        }
+
+        .nav-item {
+          @apply relative;
+        }
+
+        .nav-button {
+          @apply flex items-center gap-2 transition-all duration-300 ease-in-out;
+
+          &:hover {
+            @apply text-primary-500;
+          }
+
+          .nav-icon {
+            @apply w-4 h-4 fill-black transition-all duration-300 ease-in-out;
+          }
+
+          &:hover .nav-icon {
+            @apply fill-primary-500;
+          }
+        }
+      }
+    }
+
+    .right-contain {
+      @apply flex gap-2 items-center;
+
+      .hamburger {
+        @apply static xl:hidden items-center gap-2 border p-2 w-10 h-10 rounded-lg border-gray-300 cursor-pointer;
+      }
+
+      .mobile-menu {
+        @apply fixed top-0 right-0 w-1/2 h-screen z-[999] bg-base-0 transition-transform duration-300 ease-in-out;
+        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+        overflow: visible;
+      }
+
+      .mobile-menu.hidden {
+        @apply translate-x-full;
+      }
+
+      .mobile-menu.visible {
+        @apply translate-x-0;
+      }
+
+      .social-actions {
+        @apply hidden md:flex items-center gap-2;
+        
+        .social {
+          @apply hidden xl:flex gap-3 items-center;
+
+          @media (min-width: 768px) {
+            @apply gap-4;
+          }
+        }
+
+        .button-contain {
+          @apply hidden md:flex;
+        }
+      }
+
+      .icon-search {
+        @apply w-4 h-4 fill-black transition-all duration-300 ease-in-out;
+      }
+    }
+  }
+
+}
+
+.dropdown {
+    @apply bg-base-0 absolute z-30 flex w-44 flex-col rounded p-1 text-sm opacity-0 shadow transition-opacity duration-500 ease-in-out;
+
+    &.show {
+        @apply opacity-100;
+    }
+
+    >a {
+        @apply px-2 py-1;
+
+        &:hover {
+            @apply bg-base-200;
+        }
+    }
+}
+
+
+
+.social-btn {
+    @apply w-8 h-8 flex items-center justify-center rounded-full bg-base-200 border border-transparent transition-all duration-300 ease-in-out;
+
+    &:hover {
+        @apply bg-primary-500 border-base-0;
+
+        svg{
+            @apply fill-base-0;
+        }
+    }
+
+    .social-icon {
+        @apply w-4 h-4 fill-base-900 transition-all duration-300 ease-in-out;
+    }
+}
+.appointment-btn {
+    @apply relative inline-flex items-center px-6 py-4 bg-primary-500 text-base-0 rounded cursor-pointer overflow-hidden z-0;
+
+    &::before {
+        content: "";
+        @apply absolute top-1/2 left-1/2 bg-base-900 rounded-full;
+        width: 220%;
+        height: 220%;
+        transform: translate(-50%, 100%);
+        scale: 0 0;
+        transition:
+            transform 1s cubic-bezier(0.215, 0.61, 0.355, 1),
+            scale 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+        z-index: -1;
+    }
+
+    &:hover::before {
+        transform: translate(-50%, -50%);
+        scale: 1 1;
+    }
+}
+
+.appointment-btn-secondary {
+    @apply relative inline-block px-6 py-4 bg-base-900 text-base-0 rounded cursor-pointer overflow-hidden z-0;
+
+    &::before {
+        content: "";
+        @apply absolute top-1/2 left-1/2 bg-primary-500 rounded-full;
+        width: 220%;
+        height: 220%;
+        transform: translate(-50%, 100%);
+        scale: 0 0;
+        transition:
+            transform 1s cubic-bezier(0.215, 0.61, 0.355, 1),
+            scale 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+        z-index: -1;
+    }
+
+    &:hover::before {
+        transform: translate(-50%, -50%);
+        scale: 1 1;
+    }
+}
+html {
+  @media only screen and (min-width: 768px) {
+    font-size: 18px;
+  }
+}
+
+body {
+  @apply bg-base-0 text-base-1000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  @apply font-serif uppercase;
+}
+
+h1 {
+  @apply text-6xl;
+
+  @media only screen and (min-width: 768px) {
+    @apply text-7xl;
+  }
+}
+
+h2 {
+  @apply text-5xl;
+
+  @media only screen and (min-width: 768px) {
+    @apply text-6xl;
+  }
+}
+
+h3 {
+  @apply text-4xl;
+
+  @media only screen and (min-width: 768px) {
+    @apply text-5xl;
+  }
+}
+
+h4 {
+  @apply text-3xl;
+
+  @media only screen and (min-width: 768px) {
+    @apply text-4xl;
+  }
+}
+
+h5 {
+  @apply text-2xl;
+
+  @media only screen and (min-width: 768px) {
+    @apply text-3xl;
+  }
+}
+
+h6 {
+  @apply text-xl;
+
+  @media only screen and (min-width: 768px) {
+    @apply text-2xl;
+  }
+}

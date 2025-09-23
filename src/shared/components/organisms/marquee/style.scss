@@ -1,0 +1,48 @@
+@reference "../../../../tailwind.css";
+
+.scroll-wrapper {
+  @apply relative overflow-hidden w-full pb-10;
+
+  .marquee-text {
+    @apply flex gap-5 w-max whitespace-nowrap;
+    animation: scroll-left 100s linear infinite;
+
+    span {
+      font-family: 'Arial Black', Gadget, sans-serif;
+      @apply uppercase inline-block text-9xl font-black whitespace-nowrap;
+    }
+
+    span:nth-child(3n+1) {
+      @apply text-primary-500;
+    }
+
+    span:nth-child(3n+2) {
+      color: transparent;
+      -webkit-text-stroke: 1px black;
+    }
+
+    span:nth-child(3n+3) {
+      @apply text-primary-500;
+    }
+  }
+
+  .scroll-fade {
+    @apply absolute top-0 bottom-0 w-[70px] pointer-events-none z-[200];
+  }
+
+  .scroll-fade.left {
+    left: 0;
+    background: linear-gradient(to right, white 0%, transparent 100%);
+  }
+
+  .scroll-fade.right {
+    right: 0;
+    background: linear-gradient(to left, white 0%, transparent 100%);
+  }
+}
+
+/* Thêm keyframes để chạy ngang */
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); } // chạy sang trái 1 nửa chiều dài
+}

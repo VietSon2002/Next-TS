@@ -1,0 +1,37 @@
+@reference "../../../../tailwind.css";
+
+@layer components {
+  .btn {
+    @apply relative inline-flex items-center justify-center px-6 py-4 text-base-0 rounded cursor-pointer overflow-hidden z-0;
+  }
+
+  .btn::before {
+    content: "";
+    @apply absolute top-1/2 left-1/2 rounded-full;
+    width: 220%;
+    height: 220%;
+    transform: translate(-50%, 100%) scale(0);
+    transition:
+      transform 1s cubic-bezier(0.215, 0.61, 0.355, 1),
+      scale 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    z-index: -1;
+  }
+
+  .btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .btn-primary {
+    @apply bg-primary-500;
+  }
+  .btn-primary::before {
+    @apply bg-base-900;
+  }
+
+  .btn-secondary {
+    @apply bg-base-900;
+  }
+  .btn-secondary::before {
+    @apply bg-primary-500;
+  }
+}

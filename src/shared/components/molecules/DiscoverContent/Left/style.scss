@@ -1,0 +1,45 @@
+@reference "../../../../../tailwind.css";
+
+.left {
+  @apply w-full lg:w-1/2 ps-3 pe-3 lg:pe-14 mb-10 lg:mb-0;
+
+  /* SlideContent */
+  .slide-content {
+    @apply mb-10 text-center lg:text-left;
+
+    h6 {
+      @apply mb-2 text-primary-500 font-extralight;
+    }
+
+    h3, h4, h2 {
+      @apply font-semibold;
+    }
+
+    span {
+      @apply text-primary-500;
+    }
+
+    p {
+      @apply mt-3;
+    }
+  }
+
+  /* Phần danh sách ContactInfoItem */
+  .main-contain {
+    @apply my-8 flex flex-col sm:flex-row;
+
+    > div { /* wrapper cho từng item (ContactInfoItem + hr + p) */
+      @apply px-3 flex-1;
+    }
+
+    hr {
+      @apply my-2 border-gray-200;
+    }
+
+    p {
+      @apply mt-4;
+    }
+  }
+
+  
+}
