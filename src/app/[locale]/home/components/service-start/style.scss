@@ -1,0 +1,32 @@
+@reference "../../../../../tailwind.css";
+.service-start {
+  @apply py-20 flex flex-col items-center justify-center bg-primary-500 text-base-100;
+
+  .container {
+    @apply max-w-screen-xl mx-auto px-4 flex flex-col items-center text-center;
+
+    .theme-title {
+      @apply mb-10 flex flex-col items-center;
+
+      h6 {
+        @apply mb-2 ;
+      }
+
+      h3 {
+        @apply capitalize;
+      }
+    }
+  }
+
+  .swiper-contain {
+    @apply w-full flex justify-center;
+    max-width: 1400px;
+
+    .swiper-slide {
+      @apply w-full flex justify-center;
+    }
+    .swiper-pagination{
+      @apply absolute bottom-3;
+    }
+  }
+}

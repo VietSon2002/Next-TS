@@ -5,21 +5,19 @@ import {
   BrandLogoStart,
   DiscoverStart,
   FeatureStart,
-  Footer,
   FromStat,
   HeroSectionStart,
-  MarqueeText,
-  NavBar,
   PortfolioStart,
   ServiceStart,
   TeamStart,
   TestimonialStart,
-} from '@/shared/components/organisms';
+} from './components';
+
+import MarqueeText from '@/shared/components/organisms/marquee';
 
 export default function HomePage() {
   return (
     <div>
-      <NavBar/>
       <HeroSectionStart/>
       <FeatureStart/>
       <MarqueeText words={['Laboratory', 'Science', 'Research']} />
@@ -33,7 +31,6 @@ export default function HomePage() {
       <TestimonialStart/>
       <BrandLogoStart/>
       <BlogStart/>
-      <Footer/>
       <main>
       </main>
     </div>

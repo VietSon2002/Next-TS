@@ -2,6 +2,7 @@ import Image from 'next/image';
 import './style.scss';
 import { Icon } from '../../atoms';
 import { EIcon } from '@/shared/enums';
+import Text from '../../atoms/text';
 
 const Footer = () => {
   return (
@@ -9,88 +10,80 @@ const Footer = () => {
       <div className="container">
         <div className="top-contain">
           <div className="left">
-            <h4> Need help on Emergency? Book Your Appointment Today. </h4>
+            <Text as="h4"> Need help on Emergency? Book Your Appointment Today. </Text>
           </div>
           <div className="right">
-            <a href="#" className="appointment-btn">
-              Make Appointment
-            </a>
-            <a href="#" className="appointment-btn secondary">
-              Make Appointment
-            </a>
+            <button type="button" title="MAKE APPOINTMENT" className="appointment-btn">MAKE APPOINTMENT</button>
+            <button type="button" title="MAKE APPOINTMENT" className="appointment-btn secondary">MAKE APPOINTMENT</button>
           </div>
         </div>
         <hr />
         <div className="bottom-contain">
           <div className="right flex-[1]">
             <Image src="/assets/icons/logo-dark.png" alt="" width={180} height={180} />
-            <ul className="flex flex-col gap-y-5 pb-4 font-bold">
+            <ul>
               <li>
-                <p>5th Street, 21st Floor, New York, USA </p>
+                <Text as="p">5th Street, 21st Floor, New York, USA </Text>
               </li>
               <li>
-                <p>themeht23@gmail.com</p>
+                <Text as="p">themeht23@gmail.com</Text>
               </li>
               <li>
-                <p>+91-234-567-8900</p>
+                <Text as="p">+91-234-567-8900</Text>
               </li>
             </ul>
           </div>
           <div className="left flex-[3]">
             <div className="contain">
               <div className="flex-[1]">
-                <h6 className="font-bold mb-5">Quick Links</h6>
-                <ul className="flex flex-col gap-y-5 pb-4 font-bold">
+                <Text as="h6">Quick Links</Text>
+                <ul>
                   <li>
-                    <p>About Us</p>
+                    <Text as="p">About Us</Text>
                   </li>
                   <li>
-                    <p>Contact Us</p>
+                    <Text as="p">Contact Us</Text>
                   </li>
                   <li>
-                    <p>Portfolio</p>
+                    <Text as="p">Portfolio</Text>
                   </li>
-                  <li>Doctor Team</li>
+                  <Text as="p">Doctor Team</Text>
                 </ul>
               </div>
               <div className="flex-[1]">
-                <h6 className="font-bold mb-5">Our Services</h6>
-                <ul className="flex flex-col gap-y-5 pb-4 font-bold">
+                <Text as="h6">Our Services</Text>
+                <ul>
                   <li>
-                    <p>Biochemistry Solution</p>
+                    <Text as="p">Biochemistry Solution</Text>
                   </li>
                   <li>
-                    <p>Pharmaceutical Research</p>
+                    <Text as="p">Pharmaceutical Research</Text>
                   </li>
                   <li>
-                    <p>Pathologycam Testing</p>
+                    <Text as="p">Pathologycam Testing</Text>
                   </li>
-                  <li>Chemical Research</li>
+                  <Text as="p">Chemical Research</Text>
                 </ul>
               </div>
               <div className="flex-[2]">
-                <h6 className="font-bold mb-5">Newsletter</h6>
-                <ul className="flex flex-col gap-y-5 pb-4 font-bold">
+                <Text as="h6">Newsletter</Text>
+                <ul>
                   <li>
-                    <p>
+                    <Text as='p'>
                       Build responsive, mobile-first projects on the web with the world’s most
                       popular front-end component library.
-                    </p>
+                    </Text>
                   </li>
                   <form
-                    id="mc-form"
-                    className="flex items-center w-full max-w-md border border-gray-800 rounded-lg px-4 py-2">
+                    id="mc-form">
                     <input
                       type="email"
                       name="EMAIL"
                       id="mc-email"
                       placeholder="Email Address"
-                      required
-                      className="flex-grow h-12 bg-transparent text-white placeholder-gray-400 border-none focus:outline-none"
-                    />
+                      required/>
                     <button
-                      type="submit"
-                      className="ml-3 w-12 h-12 flex items-center justify-center bg-blue-600 rounded-lg hover:bg-blue-700 transition">
+                      type="submit" >
                        <Icon name={EIcon.Send} className="size-4 fill-base-0"/>
                     </button>
                   </form>
@@ -102,9 +95,9 @@ const Footer = () => {
         <hr />
         <div className="secondary-footer">
           <div className="container">
-            <p className="text-sm text-center lg:text-left">
+            <p className="text-center lg:text-left">
               Copyright 2025 Labozu Theme By
-              <a href="#" className="text-blue-400 hover:underline">
+              <a href="#" className="text-primary-500 hover:underline">
                 ThemeHt
               </a>{' '}
               | All Rights Reserved

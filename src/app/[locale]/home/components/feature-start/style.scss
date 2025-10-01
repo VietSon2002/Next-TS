@@ -1,0 +1,57 @@
+@reference "../../../../../tailwind.css";
+.feature-start {
+  @apply py-10 md:py-20;
+
+  .container {
+    @apply px-2 sm:px-3 mx-auto;
+
+    .row {
+      @apply flex flex-wrap justify-center items-stretch;
+
+      .col {
+        @apply w-full md:w-1/2 lg:w-1/4 px-2 mb-6 w-fit;
+      }
+
+      .item {
+        @apply flex flex-col items-start justify-start px-4 py-6 sm:px-9 sm:py-11 border border-gray-300 rounded-3xl h-full max-w-fit;
+        h6{
+          @apply font-medium;
+        }
+        span{
+          @apply text-base-600;
+        }
+      }
+
+      svg.nav-icon {
+        @apply mb-4 sm:mb-7 h-10 w-10 sm:h-15 sm:w-15;
+      }
+
+      .featured-title {
+        @apply flex flex-col gap-4;
+
+        div {
+          @apply flex flex-row items-center text-lg font-semibold uppercase;
+
+          svg {
+            @apply w-4 h-4 fill-base-900 mb-0;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.read-more {
+    @apply inline-flex font-bold items-center gap-1 text-black transition-transform duration-300 ease-in-out;
+}
+
+.read-more:hover {
+    @apply text-primary-500;
+    transform: scale(1.1);
+    @apply fill-primary-500;
+}
+
+.read-more .icon-arrow {
+    @apply w-4 h-4;
+}
