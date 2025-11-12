@@ -1,5 +1,5 @@
-import {NavBar, Footer} from '../../../shared/components/organisms/index';
-
+import {Footer} from '../../../shared/components/organisms/index';
+import NavBarServer from '../../../shared/components/organisms/navbar/NavBarServer';
 export default function HomeLayout({
   children,
 }: {
@@ -7,7 +7,7 @@ export default function HomeLayout({
 }) {
   return (
     <>
-        <NavBar />
+        <NavBarServer />
       {children}
         <Footer />
     </>

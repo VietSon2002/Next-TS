@@ -1,34 +1,31 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-// npx prisma init
+// ======================================================
+//  ✅ GENERATORS & DATASOURCE
+// ======================================================
 generator client {
-  provider = "prisma-client-js"
-  output   = "./.generated"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
+// ======================================================
+//  ✅ AUTH MODELS
+// ======================================================
 model User {
-  id            String          @id @default(cuid())
-  name          String?
-  email         String          @unique
-  emailVerified DateTime?
+  id             String          @id @default(cuid())
+  name           String?
+  email          String          @unique
+  emailVerified  DateTime?
   hashedPassword String?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  // Optional for WebAuthn support
-  Authenticator Authenticator[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  image          String?
+  accounts       Account[]
+  sessions       Session[]
+  authenticators Authenticator[]
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
 }
 
 model Account {
@@ -43,9 +40,8 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -57,9 +53,8 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 model VerificationToken {
@@ -70,7 +65,6 @@ model VerificationToken {
   @@id([identifier, token])
 }
 
-// Optional for WebAuthn support
 model Authenticator {
   credentialID         String  @unique
   userId               String
@@ -80,8 +74,111 @@ model Authenticator {
   credentialDeviceType String
   credentialBackedUp   Boolean
   transports           String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user                 User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([userId, credentialID])
+}
+
+// ======================================================
+//  ✅ CMS MODELS
+// ======================================================
+
+model Menu {
+  id        String   @id @default(cuid())
+  parentId  String?
+  pageId    String?
+  label     String
+  href      String?
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+
+  parent   Menu? @relation("SubMenus", fields: [parentId], references: [id], onDelete: SetNull)
+  children Menu[] @relation("SubMenus")
+  page     Page?  @relation(fields: [pageId], references: [id], onDelete: SetNull)
+
+  @@unique([parentId, label])
+}
+
+model Page {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  excerpt     String?
+  content     String?  @db.Text
+  sortOrder   Int      @default(0)
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  sections Section[]
+  menus    Menu[]
+}
+
+model Section {
+  id        String  @id @default(cuid())
+  pageId    String
+  title     String
+  excerpt   String?
+  content   String? @db.Text
+  sortOrder Int     @default(0)
+  isActive  Boolean @default(true)
+
+  page  Page @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  posts Post[]
+}
+
+model Post {
+  id          String     @id @default(cuid())
+  sectionId   String
+  title       String
+  slug        String?
+  excerpt     String?
+  content     String?    @db.Text
+  status      PostStatus @default(draft)
+  sortOrder   Int        @default(0)
+  publishedAt DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  section Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+}
+
+model Media {
+  id        String      @id @default(cuid())
+  itemId    String
+  itemType  ItemType
+  url       String
+  altText   String?
+  type      MediaType   @default(image)
+  mimeType  String?
+  fileSize  Int?
+  sortOrder Int         @default(0)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+// ======================================================
+//  ✅ ENUMS
+// ======================================================
+
+enum ItemType {
+  page
+  section
+  post
+}
+
+enum MediaType {
+  image
+  video
+  document
+  audio
+  other
+}
+
+enum PostStatus {
+  draft
+  reviewing
+  published
+  scheduled
+  archived
 }

@@ -16,7 +16,7 @@ const ExampleRowVirtualizer = () => {
       <RowVirtualizer<MExample>
         className="h-36"
         data={list.data}
-        render={(row, index) => <div key={index}>{row.title}</div>}
+        render={(row, index) => <div key={index}>{row.title}{row.thumbnailUrl}</div>}
       />
     </Spin>
   );

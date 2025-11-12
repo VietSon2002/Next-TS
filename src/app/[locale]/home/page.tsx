@@ -11,7 +11,7 @@ import {
   ServiceStart,
   TeamStart,
   TestimonialStart,
-} from './components';
+} from './.components';
 
 import MarqueeText from '@/shared/components/organisms/marquee';
 
