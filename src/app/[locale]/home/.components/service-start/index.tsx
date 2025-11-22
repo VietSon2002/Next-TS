@@ -1,70 +1,40 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import './style.scss';
 import Text from '@/shared/components/atoms/text';
 import ServiceCard from '@/shared/components/molecules/ServiceCard';
-import { EIcon } from '@/shared/enums';
+import type { EIcon } from '@/shared/enums';
+import { setupSwiper } from '@/core/lib/i18n/Swiper';
 
-const services = [
-  {
-    image: '/assets/images/ima-demo.png',
-    icon: EIcon.Business_Money,
-    title: 'Pharmaceutical Research',
-    description: 'We use cutting-edge technologies and…..',
-    link: '#',
-  },
-  {
-    image: '/assets/images/ima-demo.png',
-    icon: EIcon.Business_Money,
-    title: 'Clinical Laboratory',
-    description: 'Providing accurate results with modern equipment.',
-    link: '#',
-  },
-  {
-    image: '/assets/images/ima-demo.png',
-    icon: EIcon.Business_Money,
-    title: 'Toxicological Assessment',
-    description: 'Ensuring safety with comprehensive testing.',
-    link: '#',
-  },
-  {
-    image: '/assets/images/ima-demo.png',
-    icon: EIcon.Business_Money,
-    title: 'Genetic Screening',
-    description: 'Advanced solutions for personalized healthcare.',
-    link: '#',
-  },
-  {
-    image: '/assets/images/ima-demo.png',
-    icon: EIcon.Business_Money,
-    title: 'Pharmaceutical Research',
-    description: 'We use cutting-edge technologies and…..',
-    link: '#',
-  },
-  {
-    image: '/assets/images/ima-demo.png',
-    icon: EIcon.Business_Money,
-    title: 'Clinical Laboratory',
-    description: 'Providing accurate results with modern equipment.',
-    link: '#',
-  },
-  {
-    image: '/assets/images/ima-demo.png',
-    icon: EIcon.Business_Money,
-    title: 'Toxicological Assessment',
-    description: 'Ensuring safety with comprehensive testing.',
-    link: '#',
-  },
-  {
-    image: '/assets/images/ima-demo.png',
-    icon: EIcon.Business_Money,
-    title: 'Genetic Screening',
-    description: 'Advanced solutions for personalized healthcare.',
-    link: '#',
-  },
-];
+type TService = {
+  image: string;
+  icon: EIcon;
+  title: string;
+  description: string;
+  link: string;
+};
 
-export default function ServiceStart() {
+type ServiceStartProps = {
+  services: TService[];
+};
+
+export default function ServiceStart({ services }: ServiceStartProps) {
+  const [swiperInit, setSwiperInit] = useState(false);
+
+  useEffect(() => {
+    if (!swiperInit && services.length > 0) {
+      const timer = setTimeout(() => {
+        setupSwiper(); // init Swiper
+        setSwiperInit(true);
+      }, 50);
+
+      return () => clearTimeout(timer);
+    }
+  }, [swiperInit, services]);
+
+  if (!services.length) return null;
+
   return (
     <section className="service-start">
       <div className="container">
@@ -87,6 +57,13 @@ export default function ServiceStart() {
               </div>
             ))}
           </div>
+
+          {services.length > 1 && (
+            <>
+              {/* <div className="swiper-button-prev" />
+              <div className="swiper-button-next" /> */}
+            </>
+          )}
         </div>
       </div>
     </section>

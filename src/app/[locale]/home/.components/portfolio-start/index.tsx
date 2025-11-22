@@ -5,57 +5,25 @@ import { useEffect } from 'react';
 import './style.scss';
 import SlideContent from '../../../../../shared/components/molecules/SlideContent';
 
-const portfolioItems = [
-  {
-    id: 1,
-    img: '/assets/images/team-start.png',
-    category: 'DNA',
-    title: 'Blood DNA Detect',
-    link: 'portfolio-single.html',
-  },
-  {
-    id: 2,
-    img: '/assets/images/team-start.png',
-    category: 'DNA',
-    title: 'Blood DNA Detect',
-    link: 'portfolio-single.html',
-  },
-  {
-    id: 3,
-    img: '/assets/images/team-start.png',
-    category: 'DNA',
-    title: 'Blood DNA Detect',
-    link: 'portfolio-single.html',
-  },
-  {
-    id: 4,
-    img: '/assets/images/team-start.png',
-    category: 'DNA',
-    title: 'Blood DNA Detect',
-    link: 'portfolio-single.html',
-  },
-  {
-    id: 5,
-    img: '/assets/images/team-start.png',
-    category: 'DNA',
-    title: 'Blood DNA Detect',
-    link: 'portfolio-single.html',
-  },
-  {
-    id: 6,
-    img: '/assets/images/team-start.png',
-    category: 'DNA',
-    title: 'Blood DNA Detect',
-    link: 'portfolio-single.html',
-  },
-];
 
-const PortfolioStart = () => {
+type PortfolioItems = {
+  img: string;
+  category: string;
+  title: string;
+  link: string;
+  id: string;
+};
+
+type PortfolioItemsProps = {
+  portfolioItems: PortfolioItems[];
+};
+
+export default function PortfolioStart({ portfolioItems }: PortfolioItemsProps) {
   useEffect(() => {
     setupSwiper();
   }, []);
 
-  return (
+    return (
     <section className="portfolio-start">
       <div className="container">
         <div className="theme-title">
@@ -97,6 +65,4 @@ const PortfolioStart = () => {
       </div>
     </section>
   );
-};
-
-export default PortfolioStart;
+}

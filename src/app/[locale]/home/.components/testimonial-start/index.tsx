@@ -1,3 +1,4 @@
+'use client';
 import Image from "next/image";
 import "./style.scss";
 import { Icon } from "../../../../../shared/components/atoms";
@@ -15,44 +16,17 @@ type Testimonial = {
   icon: EIcon;
 };
 
-const testimonials: Testimonial[] = [
-  {
-    id: 1,
-    name: "Vitoria Carrillo",
-    role: "Lab Specialist",
-    avatar: "/assets/images/testimonial-start.png",
-    rating: 5,
-    comment:
-      "Labozu is the best diagnostic lab in the city. I have great experience with them. They provide authentic results & have the best environment inside here. I highly recommend them.",
-    icon: EIcon.Flaticon,
-  },
-  {
-    id: 2,
-    name: "John Doe",
-    role: "Patient",
-    avatar: "/assets/images/testimonial-start.png",
-    rating: 4,
-    comment:
-      "Professional staff and fast service. Definitely my go-to lab for health check-ups.",
-    icon: EIcon.Flaticon,
-  },
-  {
-    id: 3,
-    name: "Sophia Lee",
-    role: "Researcher",
-    avatar: "/assets/images/testimonial-start.png",
-    rating: 5,
-    comment:
-      "The environment is clean, staff are very helpful, and the reports are highly accurate.",
-    icon: EIcon.Flaticon,
-  },
-];
+type TestimonialStartProps = {
+  testimonials: Testimonial[];
+};
 
 const TestimonialCard = ({ t }: { t: Testimonial }) => {
+  const avatarSrc = t.avatar?.trim() || "/assets/images/testimonial-start.png";
+
   return (
     <div className="swiper-slide">
       <Image
-        src={t.avatar}
+        src={avatarSrc}
         alt={t.name}
         className="avatar-img"
         width={600}
@@ -85,7 +59,7 @@ const TestimonialCard = ({ t }: { t: Testimonial }) => {
   );
 };
 
-const TestimonialStart = () => {
+export default function TestimonialStart({ testimonials }: TestimonialStartProps) {
   return (
     <section className="testimonial-start">
       <div className="container">
@@ -124,6 +98,4 @@ const TestimonialStart = () => {
       </div>
     </section>
   );
-};
-
-export default TestimonialStart;
+}

@@ -1,20 +1,21 @@
-'use client';
+"use client";
 
-import { setupSwiper } from '@/core/lib/i18n/Swiper';
-import './style.scss';
-import { useEffect } from 'react';
-import ProfileCard from './ProfileCard';
+import { useEffect } from "react";
+import { setupSwiper } from "@/core/lib/i18n/Swiper";
+import ProfileCard from "./ProfileCard";
+import "./style.scss";
 
-const teamMembers = [
-  { name: 'Salazar Myers', role: 'Manager Of Lab', avatar: '/assets/images/avatar/avatar-2.png' },
-  { name: 'Jane Doe', role: 'Senior Researcher', avatar: '/assets/images/avatar/avatar-2.png' },
-  { name: 'John Smith', role: 'Doctor', avatar: '/assets/images/avatar/avatar-2.png' },
-  { name: 'Emily Johnson', role: 'Lab Assistant', avatar: '/assets/images/avatar/avatar-2.png' },
-  { name: 'Michael Brown', role: 'AI Specialist', avatar: '/assets/images/avatar/avatar-2.png' },
-  { name: 'Sarah Wilson', role: 'Technician', avatar: '/assets/images/avatar/avatar-2.png' },
-];
+type TeamMember = {
+  name: string;
+  role: string;
+  avatar: string;
+};
 
-const TeamStart = () => {
+type TeamStartProps = {
+  teamMembers: TeamMember[];
+};
+
+export default function TeamStart({ teamMembers }: TeamStartProps) {
   useEffect(() => {
     setupSwiper();
   }, []);
@@ -34,6 +35,4 @@ const TeamStart = () => {
       </div>
     </section>
   );
-};
-
-export default TeamStart;
+}

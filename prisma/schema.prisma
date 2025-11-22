@@ -136,12 +136,14 @@ model Post {
   content     String?    @db.Text
   status      PostStatus @default(draft)
   sortOrder   Int        @default(0)
+  icon        String?
   publishedAt DateTime?
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
 
   section Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
 }
+
 
 model Media {
   id        String      @id @default(cuid())

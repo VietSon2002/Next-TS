@@ -120,6 +120,7 @@ CREATE TABLE `Post` (
     `content` TEXT NULL,
     `status` ENUM('draft', 'reviewing', 'published', 'scheduled', 'archived') NOT NULL DEFAULT 'draft',
     `sortOrder` INTEGER NOT NULL DEFAULT 0,
+    `icon` VARCHAR(191) NULL,
     `publishedAt` DATETIME(3) NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,

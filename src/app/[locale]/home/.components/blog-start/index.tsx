@@ -1,34 +1,24 @@
+'use client';
 import Image from "next/image";
 import Text from "../../../../../shared/components/atoms/text";
-import "./style.scss";
-import { EIcon } from "@/shared/enums";
 import { Icon } from "../../../../../shared/components/atoms";
+import { EIcon } from "@/shared/enums";
+import "./style.scss";
 
-const posts = [
-  {
-    id: 1,
-    image: "/assets/images/blog-start.png",
-    date: "10 March, 2025",
-    category: "Biochemistry",
-    title: "The Role of Medical Laboratories in Infectious Disease Testing",
-  },
-  {
-    id: 2,
-    image: "/assets/images/blog-start.png",
-    date: "10 March, 2025",
-    category: "Biochemistry",
-    title: "The Role of Medical Laboratories in Infectious Disease Testing",
-  },
-  {
-    id: 3,
-    image: "/assets/images/blog-start.png",
-    date: "10 March, 2025",
-    category: "Biochemistry",
-    title: "The Role of Medical Laboratories in Infectious Disease Testing",
-  },
-];
+type BlogPost = {
+  id: string;
+  image: string;
+  date: string;
+  category: string;
+  title: string;
+  link: string;
+};
 
-const BlogStart = () => {
+type BlogStartProps = {
+  posts: BlogPost[];
+};
+
+export default function BlogStart({ posts }: BlogStartProps) {
   return (
     <section className="blog-start">
       <div className="container">
@@ -53,10 +43,11 @@ const BlogStart = () => {
                   alt={post.title}
                   width={180}
                   height={180}
+                  className="w-full h-auto"
                 />
               </div>
               <div className="content">
-                <div className="meta">
+                <div className="meta flex gap-4">
                   <div className="flex items-center gap-1">
                     <Icon name={EIcon.Calender} className="w-4 h-4" />
                     <Text as="span">{post.date}</Text>
@@ -67,11 +58,11 @@ const BlogStart = () => {
                   </div>
                 </div>
 
-                <hr />
+                <hr className="my-2" />
 
                 <Text as="h6">{post.title}</Text>
 
-                <Text as="a" href="#" className="read-more">
+                <Text as="a" href={post.link || "#"} className="read-more flex items-center gap-1">
                   Read more
                   <Icon name={EIcon.Arrow_Right} className="icon-arrow w-4 h-4" />
                 </Text>
@@ -82,6 +73,4 @@ const BlogStart = () => {
       </div>
     </section>
   );
-};
-
-export default BlogStart;
+}
